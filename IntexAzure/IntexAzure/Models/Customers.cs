@@ -57,6 +57,7 @@ namespace IntexAzure.Models
         [Required(ErrorMessage = "Please enter your payment info")]
         public string CustPaymentInfo { get; set; }
 
+        [DisplayName("Employee")]
         public int? EmpID { get; set; }
         public virtual Employees Employees { get; set; }
 

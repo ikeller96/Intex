@@ -103,7 +103,7 @@ new SelectListItem() {Text="Alabama", Value="AL"},
         new SelectListItem() { Text="West Virginia", Value="WV"},
         new SelectListItem() { Text="Wisconsin", Value="WI"},
         new SelectListItem() { Text="Wyoming", Value="WY"}
- }, null, htmlAttributes: new { @class = "form-control" })
+ }, "-- choose a state --", htmlAttributes: new { @class = "form-control" })
 
                 @Html.ValidationMessageFor(model => model.CustState, "", new { @class = "text-danger" })
             </div>
@@ -136,7 +136,7 @@ new SelectListItem() {Text="Alabama", Value="AL"},
         <div class="form-group">
             @Html.LabelFor(model => model.EmpID, "EmpID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("EmpID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("EmpID", null, "-- Choose an employee --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EmpID, "", new { @class = "text-danger" })
             </div>
         </div>
