@@ -25,7 +25,7 @@ namespace IntexAzure.Controllers
             {
                 workOrder = workOrder.Where(wo => wo.WorkOrderID == CustID);
             }
-
+            
             return View(workOrder.ToList());
         }
 
@@ -67,6 +67,7 @@ namespace IntexAzure.Controllers
 
 
             WorkOrderPrice.WorkOrderPrice = specifictests.Sum(st => st.TestType.testTypeCost);
+            WorkOrderPrice.CompleteTests = specifictests.Count(st => st.testStatus == "Complete");
 
             //in case the work order price is null then reset it to 0
             if (WorkOrderPrice.WorkOrderPrice == null)
