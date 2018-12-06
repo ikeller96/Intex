@@ -58,12 +58,26 @@ namespace IntexAzure.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrders workOrders = db.WorkOrder.Find(id);
-            if (workOrders == null)
+            WorkOrdersPrice WorkOrderPrice = new WorkOrdersPrice();
+            WorkOrderPrice.WorkOrder = db.WorkOrder.Find(id);
+
+            // bring in pricing information
+            var specifictests = from st in db.SpecificTest select st;
+            specifictests = specifictests.Where(st => st.Assays.WorkOrderID == id);
+
+
+            WorkOrderPrice.WorkOrderPrice = specifictests.Sum(st => st.TestType.testTypeCost);
+
+            //in case the work order price is null then reset it to 0
+            if (WorkOrderPrice.WorkOrderPrice == null)
+            {
+                WorkOrderPrice.WorkOrderPrice = 0;
+            }
+            if (WorkOrderPrice == null)
             {
                 return HttpNotFound();
             }
-            return View(workOrders);
+            return View(WorkOrderPrice);
         }
 
         // GET: WorkOrders/Create

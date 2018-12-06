@@ -165,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="gmailer.cs" />
+    <Compile Include="Models\AssayPrice.cs" />
     <Compile Include="Models\Assays.cs" />
     <Compile Include="Models\AssayTypes.cs" />
     <Compile Include="Models\Compounds.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\TestEmployees.cs" />
     <Compile Include="Models\TestType.cs" />
     <Compile Include="Models\WorkOrderAssays.cs" />
+    <Compile Include="Models\WorkOrdersPrice.cs" />
     <Compile Include="Models\WorkOrders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -200,6 +202,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\IntexAzure20181206095541 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -296,7 +299,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53861</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53861/</IISUrl>
+          <IISUrl>http://localhost:53865/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

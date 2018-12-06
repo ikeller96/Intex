@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,19 +12,36 @@ namespace IntexAzure.Models
     public class WorkOrders
     {
         [Key]
-        public int WorkOrderID { get; set; } 
+        public int WorkOrderID { get; set; }
 
+
+        [DisplayName("Due Date")]
+        [DataType(DataType.Date, ErrorMessage = "Please enter a valid date.")]
         public DateTime OrderDueDate { get; set; }
 
+        [DisplayName("Order Rushed? Y or N")]
+        [Required(ErrorMessage = "Please select an option")]
         public string OrderRushed { get; set; }
 
+
+        [DisplayName("Status")]
+        [Required(ErrorMessage = "Please select a status")]
         public string OrderStatus { get; set; }
 
+
+        [DisplayName("Creation Date")]
+        [DataType(DataType.Date, ErrorMessage = "Please enter a valid date.")]
         public DateTime OrderCreationDate { get; set; }
 
+
+        [DisplayName("Discounts")]
+        [Required(ErrorMessage = "Please select a discount")]
         public string OrderDiscounts { get; set; }
 
+        [DisplayName("Customer")]
+        [Required(ErrorMessage = "Please select a customer")]
         public int CustID { get; set; }
+
         public virtual Customers Customers { get; set; }
     }
 }
