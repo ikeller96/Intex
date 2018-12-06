@@ -23,7 +23,7 @@ namespace IntexAzure.Controllers
             {
                 specifictests = specifictests.Where(st => st.AssayID == AssayID);
             }
-            return View(db.SpecificTest.ToList());
+            return View(specifictests.ToList());
         }
 
         // GET: SpecificTests/Details/5

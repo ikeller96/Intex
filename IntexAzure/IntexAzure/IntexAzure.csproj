@@ -179,6 +179,7 @@
     <Compile Include="Models\TestEmployees.cs" />
     <Compile Include="Models\TestType.cs" />
     <Compile Include="Models\WorkOrderAssays.cs" />
+    <Compile Include="Models\WorkOrdersPrice.cs" />
     <Compile Include="Models\WorkOrders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -294,7 +295,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53861</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53861/</IISUrl>
+          <IISUrl>http://localhost:53865/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
