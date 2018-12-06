@@ -15,6 +15,8 @@ namespace IntexAzure.Controllers
         private static string currentUserName;
         private static string currentPassword;
 
+        //Ian comments to add changes
+
         public ActionResult Index()
         {
             return View();
