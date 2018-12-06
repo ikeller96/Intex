@@ -19,12 +19,14 @@ namespace IntexAzure.Controllers
         public ActionResult Index(int? WorkOrderID)
         {
             var assay = from a in db.Assay.Include(a => a.WorkOrders) select a;
-            
+
             if (WorkOrderID != null)
             {
                 assay = assay.Where(a => a.WorkOrderID == WorkOrderID);
                
             }
+            
+
             var specifictests = from st in db.SpecificTest select st;
             decimal assaymoney = 69;
             assaymoney = specifictests.Sum(st => st.TestType.testTypeCost);
@@ -44,12 +46,20 @@ namespace IntexAzure.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assays assays = db.Assay.Find(id);
-            if (assays == null)
+            AssayPrice assayPrice = new AssayPrice();
+             assayPrice.Assay = db.Assay.Find(id);
+
+            //this gets my pricing stuff
+            var specifictests = from st in db.SpecificTest select st;
+            specifictests = specifictests.Where(st => st.AssayID == id);
+
+            assayPrice.EstimatedPrice = specifictests.Sum(st => st.TestType.testTypeCost);
+
+            if (assayPrice == null)
             {
                 return HttpNotFound();
             }
-            return View(assays);
+            return View(assayPrice);
         }
 
         // GET: Assays/Create
