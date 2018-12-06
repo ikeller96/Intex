@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,8 +12,12 @@ namespace IntexAzure.Models
     public class Employees
     {
         [Key]
-        public int EmpID { get; set; }  
+        [DisplayName("Employee")]
+        [Required(ErrorMessage = "Please select an employee")]
+        public int EmpID { get; set; }
 
+        [DisplayName("Employee")]
+        [Required(ErrorMessage = "Please select a employee")]
         public string EmpName { get; set; }
 
         public string EmpPosition { get; set; }
