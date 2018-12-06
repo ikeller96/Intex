@@ -1,0 +1,66 @@
+﻿@model IntexAzure.Models.WorkOrders
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WorkOrders</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customers.CustName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customers.CustName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderRushed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderRushed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderCreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderCreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDiscounts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDiscounts)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

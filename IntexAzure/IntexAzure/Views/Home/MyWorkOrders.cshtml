@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IntexAzure.Models.WorkOrders>
+
+@{
+    ViewBag.Title = "MyWorkOrders";
+}
+
+<h2>MyWorkOrders</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.CustName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderRushed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDiscounts)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.CustName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderRushed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderCreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDiscounts)
+        </td>
+        <td>          
+            @Html.ActionLink("Assays", "WorkOrderAssays", new { id=item.WorkOrderID })
+        </td>
+    </tr>
+}
+
+</table>

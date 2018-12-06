@@ -1,0 +1,90 @@
+﻿@model IntexAzure.Models.Customers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Employees.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employees.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustAddress1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustAddress1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustAddress2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustAddress2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustZip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustZip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustPaymentInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustPaymentInfo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<IntexAzure.Models.Customers>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employees.EmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustAddress1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustAddress2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustZip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustPaymentInfo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employees.EmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustAddress1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustAddress2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustPaymentInfo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CustID }) |
+            @Html.ActionLink("View Work Orders", "ViewWorkOrders", new { custID = item.CustID, custName = item.CustName})
+            @Html.ActionLink("Delete", "Delete", new { id=item.CustID })
+        </td>
+    </tr>
+}
+
+</table>

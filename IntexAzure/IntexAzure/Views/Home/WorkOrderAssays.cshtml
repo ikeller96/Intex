@@ -1,0 +1,41 @@
+﻿@model IEnumerable<IntexAzure.Models.Assays>
+
+@{
+    ViewBag.Title = "WorkOrderAssays";
+}
+
+<h2>WorkOrderAssays</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkOrders.OrderRushed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayTypeID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkOrders.OrderRushed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssayStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssayTypeID)
+        </td>
+        <td>      
+            @Html.ActionLink("Tests", "AssayTests", new { id=item.AssayID }) 
+        </td>
+    </tr>
+}
+
+</table>

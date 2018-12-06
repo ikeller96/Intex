@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IntexAzure.Models.SpecificTests>
+
+@{
+    ViewBag.Title = "AssayTests";
+}
+
+<h2>AssayTests</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantitativeResults)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualitativeResults)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompoundSC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialsListID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssayID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantitativeResults)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualitativeResults)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompoundSC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaterialsListID)
+        </td>
+        @*<td>
+            @Html.ActionLink("Details", "Details", new { id=item.CompoundTestID })
+        </td>*@
+    </tr>
+}
+
+</table>
