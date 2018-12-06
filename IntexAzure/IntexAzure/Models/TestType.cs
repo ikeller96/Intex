@@ -21,6 +21,8 @@ namespace IntexAzure.Models
 
         public string testTypeConditionality { get; set; }
 
+        public int HoursNeeded { get; set; }
+
         public int MaterialsListID { get; set; }
 
 
