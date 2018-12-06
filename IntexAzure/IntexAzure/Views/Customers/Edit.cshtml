@@ -150,6 +150,9 @@ new SelectListItem() {Text="Alabama", Value="AL"},
     </div>
 }
 
+    <div>
+        @Html.ActionLink("Delete this Entry", "Delete", new { id = Model.CustID})
+    </div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
