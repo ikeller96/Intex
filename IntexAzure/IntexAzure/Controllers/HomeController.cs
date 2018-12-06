@@ -6,6 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Data.Entity;
+using System.IO;
+using System.Net;
+
 
 namespace IntexAzure.Controllers
 {
@@ -14,11 +18,11 @@ namespace IntexAzure.Controllers
         private IntexContext db = new IntexContext();
         private static string currentUserName;
         private static string currentPassword;
-
-        //Ian comments to add changes
+      
 
         public ActionResult Index()
         {
+            
             return View();
         }
 
@@ -37,7 +41,7 @@ namespace IntexAzure.Controllers
             return View();
         }
 
-
+        
         public ActionResult Login()
         {
 

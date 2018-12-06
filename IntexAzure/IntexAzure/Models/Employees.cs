@@ -17,5 +17,7 @@ namespace IntexAzure.Models
 
         public string EmpPosition { get; set; }
 
+        public int Wage { get; set; }
+
     }
 }

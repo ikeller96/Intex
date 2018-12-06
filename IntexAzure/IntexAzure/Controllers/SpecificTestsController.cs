@@ -11,119 +11,112 @@ using IntexAzure.Models;
 
 namespace IntexAzure.Controllers
 {
-    public class CustomersController : Controller
+    public class SpecificTestsController : Controller
     {
         private IntexContext db = new IntexContext();
 
-        // GET: Customers
-        public ActionResult Index()
+        // GET: SpecificTests
+        public ActionResult Index(int? AssayID)
         {
-            ViewBag.CustomerID = null;
-            ViewBag.CustomerName = null;
-            var customer = db.Customer.Include(c => c.Employees);
-            return View(customer.ToList());
+            var specifictests = from st in db.SpecificTest.Include(st => st.TestType) select st; 
+            if(AssayID != null)
+            {
+                specifictests = specifictests.Where(st => st.AssayID == AssayID);
+            }
+            return View(db.SpecificTest.ToList());
         }
 
-        public ActionResult ViewWorkOrders(int custID)
-        {
-            return RedirectToAction("Index", "WorkOrders", new { CustID = custID });
-        }
-
-        // GET: Customers/Details/5
+        // GET: SpecificTests/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customer.Find(id);
-            if (customers == null)
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            if (specificTests == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(specificTests);
         }
 
-        // GET: Customers/Create
+        // GET: SpecificTests/Create
         public ActionResult Create()
         {
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName");
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: SpecificTests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPhone,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
+        public ActionResult Create([Bind(Include = "CompoundTestID,AssayID,TestTypeID,QuantitativeResults,QualitativeResults,CompoundSC,MaterialsListID")] SpecificTests specificTests)
         {
             if (ModelState.IsValid)
             {
-                db.Customer.Add(customers);
+                db.SpecificTest.Add(specificTests);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName", customers.EmpID);
-            return View(customers);
+            return View(specificTests);
         }
 
-        // GET: Customers/Edit/5
+        // GET: SpecificTests/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customer.Find(id);
-            if (customers == null)
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            if (specificTests == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName", customers.EmpID);
-            return View(customers);
+            return View(specificTests);
         }
 
-        // POST: Customers/Edit/5
+        // POST: SpecificTests/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPhone,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
+        public ActionResult Edit([Bind(Include = "CompoundTestID,AssayID,TestTypeID,QuantitativeResults,QualitativeResults,CompoundSC,MaterialsListID")] SpecificTests specificTests)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customers).State = EntityState.Modified;
+                db.Entry(specificTests).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName", customers.EmpID);
-            return View(customers);
+            return View(specificTests);
         }
 
-        // GET: Customers/Delete/5
+        // GET: SpecificTests/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customer.Find(id);
-            if (customers == null)
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            if (specificTests == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(specificTests);
         }
 
-        // POST: Customers/Delete/5
+        // POST: SpecificTests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customers customers = db.Customer.Find(id);
-            db.Customer.Remove(customers);
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            db.SpecificTest.Remove(specificTests);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
