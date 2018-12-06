@@ -103,6 +103,7 @@ namespace IntexAzure.Controllers
         public ActionResult Create()
         {
             ViewBag.CustID = new SelectList(db.Customer, "CustID", "CustName");
+
             return View();
         }
 
