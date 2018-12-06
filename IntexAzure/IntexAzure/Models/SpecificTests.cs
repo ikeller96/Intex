@@ -25,6 +25,9 @@ namespace IntexAzure.Models
 
         public int MaterialsListID { get; set; }
 
+        public virtual TestType TestType { get; set; }
+
+        public virtual Assays Assays { get; set; }
 
 
 

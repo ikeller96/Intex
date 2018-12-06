@@ -16,17 +16,20 @@ namespace IntexAzure.Controllers
         private IntexContext db = new IntexContext();
 
         // GET: WorkOrders
-        public ActionResult Index(string CustName)
+        public ActionResult Index(int? CustID)
         {
             var workOrder = from wo in db.WorkOrder.Include(w => w.Customers) select wo;
-            var test = db.WorkOrder.Include(w => w.Customers);
-            if(!String.IsNullOrEmpty(CustName))
+            
+
+            if (CustID != null)
             {
-                workOrder = workOrder.Where(wo => wo.Customers.CustName.Equals(CustName));
+                workOrder = workOrder.Where(wo => wo.WorkOrderID == CustID);
             }
+
             return View(workOrder.ToList());
         }
 
+        
         public ActionResult EmailUpdate(string email, string name, string status, int workorderid, int testnum)
         {
 
@@ -42,11 +45,10 @@ namespace IntexAzure.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ViewWorkOrderAssays(int WorkOrderID)
+        public ActionResult ViewWorkOrderAssays(int workOrderID)
         {
-            IEnumerable<Assays> AssaysResults = db.Database.SqlQuery<Assays>(
-               "SELECT * FROM Assays WHERE WorkOrderID =" + WorkOrderID);
-            return View("../Assays/Index", AssaysResults);
+
+            return RedirectToAction("Index", "Assays", new { WorkOrderID = workOrderID });
         }
 
         // GET: WorkOrders/Details/5

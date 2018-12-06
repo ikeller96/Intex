@@ -158,6 +158,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SpecificTestsController.cs" />
     <Compile Include="Controllers\WorkOrdersController.cs" />
     <Compile Include="DAL\IntexContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,6 +252,11 @@
     <Content Include="Views\Assays\Details.cshtml" />
     <Content Include="Views\Assays\Edit.cshtml" />
     <Content Include="Views\Assays\Index.cshtml" />
+    <Content Include="Views\SpecificTests\Create.cshtml" />
+    <Content Include="Views\SpecificTests\Delete.cshtml" />
+    <Content Include="Views\SpecificTests\Details.cshtml" />
+    <Content Include="Views\SpecificTests\Edit.cshtml" />
+    <Content Include="Views\SpecificTests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

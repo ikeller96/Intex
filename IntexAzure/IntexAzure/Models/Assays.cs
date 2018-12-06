@@ -20,6 +20,7 @@ namespace IntexAzure.Models
         public int AssayTypeID { get; set; }
 
         public virtual WorkOrders WorkOrders { get; set; }
+        
 
         //NEED TO add the assaytype virtual thing
     }

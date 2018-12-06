@@ -11,127 +11,112 @@ using IntexAzure.Models;
 
 namespace IntexAzure.Controllers
 {
-    public class AssaysController : Controller
+    public class SpecificTestsController : Controller
     {
         private IntexContext db = new IntexContext();
 
-        // GET: Assays
-        public ActionResult Index(int? WorkOrderID)
+        // GET: SpecificTests
+        public ActionResult Index(int? AssayID)
         {
-            var assay = from a in db.Assay.Include(a => a.WorkOrders) select a;
-            
-            if (WorkOrderID != null)
+            var specifictests = from st in db.SpecificTest.Include(st => st.TestType) select st; 
+            if(AssayID != null)
             {
-                assay = assay.Where(a => a.WorkOrderID == WorkOrderID);
-               
+                specifictests = specifictests.Where(st => st.AssayID == AssayID);
             }
-            var specifictests = from st in db.SpecificTest select st;
-            decimal assaymoney = 69;
-            assaymoney = specifictests.Sum(st => st.TestType.testTypeCost);
-            ViewBag.test = assaymoney;
-            return View(assay.ToList());
+            return View(db.SpecificTest.ToList());
         }
 
-
-        public ActionResult ViewAssayTests(int assayID)
-        {
-            return RedirectToAction("Index", "SpecificTests", new { AssayID = assayID });
-        }
-        // GET: Assays/Details/5
+        // GET: SpecificTests/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assays assays = db.Assay.Find(id);
-            if (assays == null)
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            if (specificTests == null)
             {
                 return HttpNotFound();
             }
-            return View(assays);
+            return View(specificTests);
         }
 
-        // GET: Assays/Create
+        // GET: SpecificTests/Create
         public ActionResult Create()
         {
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed");
             return View();
         }
 
-        // POST: Assays/Create
+        // POST: SpecificTests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AssayID,WorkOrderID,AssayStatus,AssayTypeID")] Assays assays)
+        public ActionResult Create([Bind(Include = "CompoundTestID,AssayID,TestTypeID,QuantitativeResults,QualitativeResults,CompoundSC,MaterialsListID")] SpecificTests specificTests)
         {
             if (ModelState.IsValid)
             {
-                db.Assay.Add(assays);
+                db.SpecificTest.Add(specificTests);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed", assays.WorkOrderID);
-            return View(assays);
+            return View(specificTests);
         }
 
-        // GET: Assays/Edit/5
+        // GET: SpecificTests/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assays assays = db.Assay.Find(id);
-            if (assays == null)
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            if (specificTests == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed", assays.WorkOrderID);
-            return View(assays);
+            return View(specificTests);
         }
 
-        // POST: Assays/Edit/5
+        // POST: SpecificTests/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssayID,WorkOrderID,AssayStatus,AssayTypeID")] Assays assays)
+        public ActionResult Edit([Bind(Include = "CompoundTestID,AssayID,TestTypeID,QuantitativeResults,QualitativeResults,CompoundSC,MaterialsListID")] SpecificTests specificTests)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(assays).State = EntityState.Modified;
+                db.Entry(specificTests).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed", assays.WorkOrderID);
-            return View(assays);
+            return View(specificTests);
         }
 
-        // GET: Assays/Delete/5
+        // GET: SpecificTests/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Assays assays = db.Assay.Find(id);
-            if (assays == null)
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            if (specificTests == null)
             {
                 return HttpNotFound();
             }
-            return View(assays);
+            return View(specificTests);
         }
 
-        // POST: Assays/Delete/5
+        // POST: SpecificTests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Assays assays = db.Assay.Find(id);
-            db.Assay.Remove(assays);
+            SpecificTests specificTests = db.SpecificTest.Find(id);
+            db.SpecificTest.Remove(specificTests);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
