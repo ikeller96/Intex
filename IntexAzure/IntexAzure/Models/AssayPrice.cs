@@ -8,6 +8,6 @@ namespace IntexAzure.Models
     public class AssayPrice
     {
         public Assays Assay { get; set; }
-        public decimal EstimatedPrice { get; set; }
+        public decimal? EstimatedPrice { get; set; }
     }
 }

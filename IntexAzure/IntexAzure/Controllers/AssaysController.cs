@@ -52,6 +52,12 @@ namespace IntexAzure.Controllers
 
             assayPrice.EstimatedPrice = specifictests.Sum(st => st.TestType.testTypeCost);
 
+            //in case the assay price is null, reset it to 0
+            if (assayPrice.EstimatedPrice == null)
+            {
+                assayPrice.EstimatedPrice = 0;
+            }
+
             if (assayPrice == null)
             {
                 return HttpNotFound();
