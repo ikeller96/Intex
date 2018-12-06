@@ -28,10 +28,9 @@
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.AssayStatus, new List<SelectListItem>
 {
-                   new SelectListItem() {Text="Initial Review", Value="Initial Review"},
-                   new SelectListItem() { Text="Testing", Value="Testing"},
-                   new SelectListItem() { Text="Completed", Value="Completed"},
-                   new SelectListItem() { Text="Back Logged", Value="Back Logged"},},
+                   new SelectListItem() { Text="In Progress", Value="In Progress"},
+                   new SelectListItem() { Text="Complete", Value="Complete"},
+                   new SelectListItem() { Text="BackLog", Value="BackLog"},},
                "-- Order Status --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.AssayStatus, "", new { @class = "text-danger" })
             </div>
