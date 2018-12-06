@@ -1,4 +1,4 @@
-﻿@model IntexAzure.Models.WorkOrders
+﻿@model IntexAzure.Models.WorkOrdersPrice
 
 @{
     ViewBag.Title = "Details";
@@ -11,56 +11,63 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Customers.CustName)
+            @Html.DisplayNameFor(model => model.WorkOrder.Customers.CustName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Customers.CustName)
+            @Html.DisplayFor(model => model.WorkOrder.Customers.CustName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkOrderPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkOrderPrice)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderDueDate)
+            @Html.DisplayNameFor(model => model.WorkOrder.OrderDueDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderDueDate)
+            @Html.DisplayFor(model => model.WorkOrder.OrderDueDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderRushed)
+            @Html.DisplayNameFor(model => model.WorkOrder.OrderRushed)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderRushed)
+            @Html.DisplayFor(model => model.WorkOrder.OrderRushed)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderStatus)
+            @Html.DisplayNameFor(model => model.WorkOrder.OrderStatus)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderStatus)
+            @Html.DisplayFor(model => model.WorkOrder.OrderStatus)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderCreationDate)
+            @Html.DisplayNameFor(model => model.WorkOrder.OrderCreationDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderCreationDate)
+            @Html.DisplayFor(model => model.WorkOrder.OrderCreationDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderDiscounts)
+            @Html.DisplayNameFor(model => model.WorkOrder.OrderDiscounts)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderDiscounts)
+            @Html.DisplayFor(model => model.WorkOrder.OrderDiscounts)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrderID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrder.WorkOrderID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

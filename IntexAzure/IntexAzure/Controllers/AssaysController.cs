@@ -19,18 +19,15 @@ namespace IntexAzure.Controllers
         public ActionResult Index(int? WorkOrderID)
         {
             var assay = from a in db.Assay.Include(a => a.WorkOrders) select a;
-
+            
+            
             if (WorkOrderID != null)
             {
                 assay = assay.Where(a => a.WorkOrderID == WorkOrderID);
                
             }
             
-
-            var specifictests = from st in db.SpecificTest select st;
-            decimal assaymoney = 69;
-            assaymoney = specifictests.Sum(st => st.TestType.testTypeCost);
-            ViewBag.test = assaymoney;
+           
             return View(assay.ToList());
         }
 
@@ -54,6 +51,12 @@ namespace IntexAzure.Controllers
             specifictests = specifictests.Where(st => st.AssayID == id);
 
             assayPrice.EstimatedPrice = specifictests.Sum(st => st.TestType.testTypeCost);
+
+            //in case the assay price is null, reset it to 0
+            if (assayPrice.EstimatedPrice == null)
+            {
+                assayPrice.EstimatedPrice = 0;
+            }
 
             if (assayPrice == null)
             {
