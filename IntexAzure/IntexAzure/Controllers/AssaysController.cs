@@ -11,119 +11,127 @@ using IntexAzure.Models;
 
 namespace IntexAzure.Controllers
 {
-    public class CustomersController : Controller
+    public class AssaysController : Controller
     {
         private IntexContext db = new IntexContext();
 
-        // GET: Customers
-        public ActionResult Index()
+        // GET: Assays
+        public ActionResult Index(int? WorkOrderID)
         {
-            ViewBag.CustomerID = null;
-            ViewBag.CustomerName = null;
-            var customer = db.Customer.Include(c => c.Employees);
-            return View(customer.ToList());
+            var assay = from a in db.Assay.Include(a => a.WorkOrders) select a;
+            
+            if (WorkOrderID != null)
+            {
+                assay = assay.Where(a => a.WorkOrderID == WorkOrderID);
+               
+            }
+            var specifictests = from st in db.SpecificTest select st;
+            decimal assaymoney = 69;
+            assaymoney = specifictests.Sum(st => st.TestType.testTypeCost);
+            ViewBag.test = assaymoney;
+            return View(assay.ToList());
         }
 
-        public ActionResult ViewWorkOrders(int custID)
-        {
-            return RedirectToAction("Index", "WorkOrders", new { CustID = custID });
-        }
 
-        // GET: Customers/Details/5
+        public ActionResult ViewAssayTests(int assayID)
+        {
+            return RedirectToAction("Index", "SpecificTests", new { AssayID = assayID });
+        }
+        // GET: Assays/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customer.Find(id);
-            if (customers == null)
+            Assays assays = db.Assay.Find(id);
+            if (assays == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(assays);
         }
 
-        // GET: Customers/Create
+        // GET: Assays/Create
         public ActionResult Create()
         {
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName");
+            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed");
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Assays/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPhone,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
+        public ActionResult Create([Bind(Include = "AssayID,WorkOrderID,AssayStatus,AssayTypeID")] Assays assays)
         {
             if (ModelState.IsValid)
             {
-                db.Customer.Add(customers);
+                db.Assay.Add(assays);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName", customers.EmpID);
-            return View(customers);
+            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed", assays.WorkOrderID);
+            return View(assays);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Assays/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customer.Find(id);
-            if (customers == null)
+            Assays assays = db.Assay.Find(id);
+            if (assays == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName", customers.EmpID);
-            return View(customers);
+            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed", assays.WorkOrderID);
+            return View(assays);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Assays/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPhone,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
+        public ActionResult Edit([Bind(Include = "AssayID,WorkOrderID,AssayStatus,AssayTypeID")] Assays assays)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customers).State = EntityState.Modified;
+                db.Entry(assays).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName", customers.EmpID);
-            return View(customers);
+            ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed", assays.WorkOrderID);
+            return View(assays);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Assays/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customers customers = db.Customer.Find(id);
-            if (customers == null)
+            Assays assays = db.Assay.Find(id);
+            if (assays == null)
             {
                 return HttpNotFound();
             }
-            return View(customers);
+            return View(assays);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Assays/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customers customers = db.Customer.Find(id);
-            db.Customer.Remove(customers);
+            Assays assays = db.Assay.Find(id);
+            db.Assay.Remove(assays);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

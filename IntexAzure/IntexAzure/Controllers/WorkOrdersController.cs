@@ -16,12 +16,20 @@ namespace IntexAzure.Controllers
         private IntexContext db = new IntexContext();
 
         // GET: WorkOrders
-        public ActionResult Index()
+        public ActionResult Index(int? CustID)
         {
-            var workOrder = db.WorkOrder.Include(w => w.Customers);
+            var workOrder = from wo in db.WorkOrder.Include(w => w.Customers) select wo;
+            
+
+            if (CustID != null)
+            {
+                workOrder = workOrder.Where(wo => wo.WorkOrderID == CustID);
+            }
+
             return View(workOrder.ToList());
         }
 
+        
         public ActionResult EmailUpdate(string email, string name, string status, int workorderid, int testnum)
         {
 
@@ -35,6 +43,12 @@ namespace IntexAzure.Controllers
             mailer.IsHtml = true;
             mailer.Send();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ViewWorkOrderAssays(int workOrderID)
+        {
+
+            return RedirectToAction("Index", "Assays", new { WorkOrderID = workOrderID });
         }
 
         // GET: WorkOrders/Details/5

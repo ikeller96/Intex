@@ -1,0 +1,66 @@
+﻿@model IntexAzure.Models.SpecificTests
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SpecificTests</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AssayID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssayID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantitativeResults)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantitativeResults)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QualitativeResults)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QualitativeResults)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompoundSC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompoundSC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialsListID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaterialsListID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CompoundTestID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

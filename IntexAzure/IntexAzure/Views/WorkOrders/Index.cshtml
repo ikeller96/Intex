@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 
+
 <div class="row">
     <div class="col-sm-6">
         <h2>Index</h2>
@@ -20,9 +21,15 @@
 </p>
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.Customers.CustID)</th>
         <th>
-            @Html.DisplayNameFor(model => model.Customers.CustName)
+            Customer ID
+        </th>
+
+        <th>
+            Customer Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkOrderID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OrderDueDate)
@@ -44,37 +51,59 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+    <tr>
+        <!--logic to get the 2 methods to work-->
+        @if (ViewBag.CustomerID == null)
+        {
             <td>
                 @Html.DisplayFor(modelItem => item.Customers.CustID)
             </td>
+        }
+        else
+        {
+            <td>
+                @ViewBag.CustomerID
+            </td>
+        }
+        @if (ViewBag.CustomerName == null)
+        {
             <td>
                 @Html.DisplayFor(modelItem => item.Customers.CustName)
             </td>
+        }
+        else
+        {
             <td>
-                @Html.DisplayFor(modelItem => item.OrderDueDate)
+                @ViewBag.CustomerName
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderRushed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderCreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDiscounts)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderID }) |
-                @Html.ActionLink("Email an Update", "EmailUpdate", new { name = item.Customers.CustName, email = item.Customers.CustEmail, status = item.OrderStatus, testnum = 900 / 3, workorderid = item.WorkOrderID })
-                <!--
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkOrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderRushed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderCreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDiscounts)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderID }) |
+            @Html.ActionLink("Email an Update", "EmailUpdate", new { name = item.Customers.CustName, email = item.Customers.CustEmail, status = item.OrderStatus, testnum = 900 / 3, workorderid = item.WorkOrderID })
+            @Html.ActionLink("View Assays", "ViewWorkOrderAssays", new { workOrderID = item.WorkOrderID })
+            <!--
 
-    -->
-                @Html.ActionLink("Delete", "Delete", new { id = item.WorkOrderID })
-            </td>
-        </tr>
+        -->
+        </td>
+    </tr>
     }
 
 </table>
