@@ -18,8 +18,7 @@ namespace IntexAzure.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            ViewBag.CustomerID = null;
-            ViewBag.CustomerName = null;
+            
             var customer = db.Customer.Include(c => c.Employees);
             return View(customer.ToList());
         }

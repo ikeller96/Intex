@@ -65,15 +65,33 @@ namespace IntexAzure.Controllers
             var specifictests = from st in db.SpecificTest select st;
             specifictests = specifictests.Where(st => st.Assays.WorkOrderID == id);
 
-
-            WorkOrderPrice.WorkOrderPrice = specifictests.Sum(st => st.TestType.testTypeCost);
+            // get values of stuff
+            WorkOrderPrice.WorkOrderPrice = specifictests.Sum(st => st.TestType.testTypeCost).GetValueOrDefault();
             WorkOrderPrice.CompleteTests = specifictests.Count(st => st.testStatus == "Complete");
+            WorkOrderPrice.BackLogTests = specifictests.Count(st => st.testStatus == "BackLog");
+            WorkOrderPrice.InProgressTests = specifictests.Count(st => st.testStatus == "In Progress");
+
+            decimal totalTests = (WorkOrderPrice.CompleteTests.GetValueOrDefault() + WorkOrderPrice.BackLogTests.GetValueOrDefault() + WorkOrderPrice.InProgressTests.GetValueOrDefault());
+            decimal percentComplete;
+                //get decent formatting for display
+            if (totalTests == 0)
+            {
+                 percentComplete = 0;
+            }
+            else
+            {
+                percentComplete = (WorkOrderPrice.CompleteTests.GetValueOrDefault() / (WorkOrderPrice.CompleteTests.GetValueOrDefault() + WorkOrderPrice.BackLogTests.GetValueOrDefault() + WorkOrderPrice.InProgressTests.GetValueOrDefault())) * 100;
+
+            }
+            var sPercentComplete = String.Format("{0:N0}", percentComplete);
+            ViewBag.PercentComplete = sPercentComplete;
+
 
             //in case the work order price is null then reset it to 0
-            if (WorkOrderPrice.WorkOrderPrice == null)
+            /*if (WorkOrderPrice.WorkOrderPrice == null)
             {
                 WorkOrderPrice.WorkOrderPrice = 0;
-            }
+            }*/
             if (WorkOrderPrice == null)
             {
                 return HttpNotFound();

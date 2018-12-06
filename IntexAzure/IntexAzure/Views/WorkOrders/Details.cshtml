@@ -9,6 +9,7 @@
 <div>
     <h4>WorkOrders</h4>
     <hr />
+    <h6>Percent Complete: @ViewBag.PercentComplete %</h6>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.WorkOrder.Customers.CustName)
@@ -31,6 +32,20 @@
 
         <dd>
             @Html.DisplayFor(model => model.CompleteTests)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BackLogTests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackLogTests)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InProgressTests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InProgressTests)
         </dd>
 
         <dt>

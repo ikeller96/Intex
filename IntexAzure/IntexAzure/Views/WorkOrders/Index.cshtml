@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-sm-6">
-        <h2>Index</h2>
+        <h2>Work Orders </h2>
     </div>
     <div class="col-sm-6">
         <div class="btn btn-default">
@@ -22,11 +22,11 @@
 <table class="table">
     <tr>
         <th>
-            Customer ID
+            @Html.DisplayNameFor(model => model.CustID)
         </th>
 
         <th>
-            Customer Name
+            @Html.DisplayNameFor(model => model.Customers.CustName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.WorkOrderID)
@@ -52,31 +52,12 @@
     @foreach (var item in Model)
     {
     <tr>
-        <!--logic to get the 2 methods to work-->
-        @if (ViewBag.CustomerID == null)
-        {
-            <td>
-                @Html.DisplayFor(modelItem => item.Customers.CustID)
-            </td>
-        }
-        else
-        {
-            <td>
-                @ViewBag.CustomerID
-            </td>
-        }
-        @if (ViewBag.CustomerName == null)
-        {
-            <td>
-                @Html.DisplayFor(modelItem => item.Customers.CustName)
-            </td>
-        }
-        else
-        {
-            <td>
-                @ViewBag.CustomerName
-            </td>
-        }
+        <td>
+            @Html.DisplayFor(modelItem => item.CustID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customers.CustName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.WorkOrderID)
         </td>
@@ -97,7 +78,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.WorkOrderID})|
+            @Html.ActionLink("Details", "Details", new { id = item.WorkOrderID })|
             @Html.ActionLink("Email an Update", "EmailUpdate", new { name = item.Customers.CustName, email = item.Customers.CustEmail, status = item.OrderStatus, testnum = 900 / 3, workorderid = item.WorkOrderID })
             @Html.ActionLink("View Assays", "ViewWorkOrderAssays", new { workOrderID = item.WorkOrderID })
             <!--

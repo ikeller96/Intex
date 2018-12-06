@@ -88,12 +88,16 @@
     </div>
 }
 
-    <div>
-        @Html.ActionLink("Delete this entry", "Delete", )
-    </div>
+    
 
 <div>
     @Html.ActionLink("Back to List", "Index")
+</div>
+<br />  
+<br />  
+<br />  
+<div class="btn btn-default">
+    @Html.ActionLink("Delete this entry", "Delete", new { id = Model.WorkOrderID })
 </div>
 
 @section Scripts {
