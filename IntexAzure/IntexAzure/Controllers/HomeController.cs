@@ -17,6 +17,7 @@ namespace IntexAzure.Controllers
 
         public ActionResult Index()
         {
+            //test
             return View();
         }
 
