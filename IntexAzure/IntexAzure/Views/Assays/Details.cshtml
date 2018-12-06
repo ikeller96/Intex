@@ -1,4 +1,4 @@
-﻿@model IntexAzure.Models.Assays
+﻿@model IntexAzure.Models.AssayPrice
 
 @{
     ViewBag.Title = "Details";
@@ -8,35 +8,36 @@
 
 <div>
     <h4>Assays</h4>
+    <h2>Estimated Price: @Model.EstimatedPrice</h2>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.WorkOrders.OrderRushed)
+            @Html.DisplayNameFor(model => model.Assay.WorkOrders.OrderRushed)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WorkOrders.OrderRushed)
+            @Html.DisplayFor(model => model.Assay.WorkOrders.OrderRushed)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AssayStatus)
+            @Html.DisplayNameFor(model => model.Assay.AssayStatus)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssayStatus)
+            @Html.DisplayFor(model => model.Assay.AssayStatus)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AssayTypeID)
+            @Html.DisplayNameFor(model => model.Assay.AssayTypeID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssayTypeID)
+            @Html.DisplayFor(model => model.Assay.AssayTypeID)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AssayID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Assay.AssayID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

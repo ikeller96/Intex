@@ -165,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="gmailer.cs" />
+    <Compile Include="Models\AssayPrice.cs" />
     <Compile Include="Models\Assays.cs" />
     <Compile Include="Models\AssayTypes.cs" />
     <Compile Include="Models\Compounds.cs" />
@@ -196,6 +197,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\IntexAzure20181206095541 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
