@@ -23,7 +23,7 @@ namespace IntexAzure.Controllers
         public ActionResult Index()
         {
             
-            return View();
+            return View("Index1");
         }
 
         public ActionResult About()
@@ -70,7 +70,10 @@ namespace IntexAzure.Controllers
                     currentUserName = username;
                     currentPassword = password;
 
-                    return RedirectToAction("Index", "Home");
+                    ViewBag.Name = LoginID.First().CustName;
+                    ViewBag.CustID = LoginID.First().CustID;
+
+                    return RedirectToAction("WelcomeCustomer", "Home"); //cust view
                 }
 
                 else
@@ -86,7 +89,7 @@ namespace IntexAzure.Controllers
                 currentUserName = username;
                 currentPassword = password;
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("WelcomeEmployee", "Home"); //emp view
             }
 
             else
@@ -201,6 +204,66 @@ namespace IntexAzure.Controllers
 
 
             return View(currentTests.ToList());
+        }
+
+        public ActionResult WelcomeCustomer()
+        {
+            var Cust =
+                    db.Database.SqlQuery<Customers>(
+                "Select * " +
+                "FROM Customers " +
+                "WHERE UserName = '" + currentUserName + "' AND " +
+                "Password = '" + currentPassword + "'");
+
+            ViewBag.Name = Cust.First().CustName;
+
+            return View();
+        }
+
+
+        public ActionResult NewWorkOrder(int? id)
+        {
+            ViewBag.CustID = id;
+
+            return View();
+        }
+
+        // POST: WorkOrders/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewWorkOrder([Bind(Include = "WorkOrderID,OrderDueDate,OrderRushed,OrderStatus,OrderCreationDate,OrderDiscounts,CustID")] WorkOrders workOrders)
+        {
+            if (ModelState.IsValid)
+            {
+                var UsersID =
+                    db.Database.SqlQuery<Customers>(
+                "Select * " +
+                "FROM Customers " +
+                "WHERE UserName = '" + currentUserName + "' AND " +
+                "Password = '" + currentPassword + "'");
+
+                workOrders.CustID = UsersID.First().CustID;
+                db.WorkOrder.Add(workOrders);
+                db.SaveChanges();
+                return RedirectToAction("Thanks", new { name = UsersID.First().CustName});
+            }
+
+            ViewBag.CustID = new SelectList(db.Customer, "CustID", "CustName", workOrders.CustID);
+            return View(workOrders);
+        }
+
+        public ActionResult Thanks(string name)
+        {
+            ViewBag.Name = name;
+
+            return View();
+        }
+
+        public ActionResult WelcomeEmployee()
+        {
+            return View();
         }
 
     }

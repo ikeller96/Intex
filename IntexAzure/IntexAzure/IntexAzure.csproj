@@ -264,6 +264,11 @@
     <Content Include="Views\SpecificTests\Details.cshtml" />
     <Content Include="Views\SpecificTests\Edit.cshtml" />
     <Content Include="Views\SpecificTests\Index.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Home\WelcomeCustomer.cshtml" />
+    <Content Include="Views\Home\NewWorkOrder.cshtml" />
+    <Content Include="Views\Home\Thanks.cshtml" />
+    <Content Include="Views\Home\WelcomeEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

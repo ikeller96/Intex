@@ -1,7 +1,7 @@
 ﻿@model IntexAzure.Models.WorkOrders
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "NewWorkOrder";
 }
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -29,8 +29,7 @@
     </div>
 </div>
 
-<h2>Create</h2>
-
+<h2>NewWorkOrder</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -51,11 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderRushed, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.OrderRushed, new List<SelectListItem>
-{
-                   new SelectListItem() {Text="Yes", Value="Yes"},
-                   new SelectListItem() { Text="No", Value="No"}, },
-               "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.OrderRushed, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OrderRushed, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -63,13 +58,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderStatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.OrderStatus, new List<SelectListItem>
-{
-                   new SelectListItem() {Text="Initial Review", Value="Initial Review"},
-                   new SelectListItem() { Text="Testing", Value="Testing"},
-                   new SelectListItem() { Text="Completed", Value="Completed"},
-                   new SelectListItem() { Text="Back Logged", Value="Back Logged"},},
-               "-- Order Status --", htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.OrderStatus, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -85,22 +74,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderDiscounts, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.OrderDiscounts, new List<SelectListItem>
-{
-                   new SelectListItem() {Text="None", Value="None"},
-                   new SelectListItem() { Text="Bronze", Value="Bronze"},
-                   new SelectListItem() { Text="Gold", Value="Gold"},
-                   new SelectListItem() { Text="Platinum", Value="Platinum"},},
-               "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.OrderDiscounts, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OrderDiscounts, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustID, "CustID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CustID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CustID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -115,7 +90,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
