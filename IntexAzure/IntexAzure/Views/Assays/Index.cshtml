@@ -5,6 +5,7 @@
 }
 
 <h2>Index</h2>
+<p>The total amount of all the testsssss is @ViewBag.test</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,6 +24,7 @@
         <th>
             @Html.DisplayNameFor(model => model.AssayTypeID)
         </th>
+        
         <th></th>
     </tr>
 
@@ -40,8 +42,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.AssayTypeID)
         </td>
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.AssayID }) |
+            @Html.ActionLink("View the Tests", "ViewAssayTests", new { assayID = item.AssayID })|
             @Html.ActionLink("Details", "Details", new { id = item.AssayID }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.AssayID })
         </td>

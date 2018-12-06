@@ -98,7 +98,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderID }) |
             @Html.ActionLink("Email an Update", "EmailUpdate", new { name = item.Customers.CustName, email = item.Customers.CustEmail, status = item.OrderStatus, testnum = 900 / 3, workorderid = item.WorkOrderID })
-            @Html.ActionLink("View Assays", "ViewWorkOrderAssays", new { WorkOrderID = item.WorkOrderID })
+            @Html.ActionLink("View Assays", "ViewWorkOrderAssays", new { workOrderID = item.WorkOrderID })
             <!--
 
         -->
