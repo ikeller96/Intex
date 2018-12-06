@@ -17,7 +17,7 @@ namespace IntexAzure.Models
 
         public string testTypeDescription { get; set; }
 
-        public decimal testTypeCost { get; set; }
+        public decimal? testTypeCost { get; set; }
 
         public string testTypeConditionality { get; set; }
 

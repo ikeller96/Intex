@@ -8,6 +8,6 @@ namespace IntexAzure.Models
     public class WorkOrdersPrice
     {
         public WorkOrders WorkOrder { get; set; }
-        public decimal WorkOrderPrice { get; set; }
+        public decimal? WorkOrderPrice { get; set; }
     }
 }

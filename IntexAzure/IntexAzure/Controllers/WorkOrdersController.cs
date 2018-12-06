@@ -67,6 +67,12 @@ namespace IntexAzure.Controllers
 
 
             WorkOrderPrice.WorkOrderPrice = specifictests.Sum(st => st.TestType.testTypeCost);
+
+            //in case the work order price is null then reset it to 0
+            if (WorkOrderPrice.WorkOrderPrice == null)
+            {
+                WorkOrderPrice.WorkOrderPrice = 0;
+            }
             if (WorkOrderPrice == null)
             {
                 return HttpNotFound();
