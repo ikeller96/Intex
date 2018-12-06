@@ -16,9 +16,14 @@ namespace IntexAzure.Controllers
         private IntexContext db = new IntexContext();
 
         // GET: WorkOrders
-        public ActionResult Index()
+        public ActionResult Index(string CustName)
         {
-            var workOrder = db.WorkOrder.Include(w => w.Customers);
+            var workOrder = from wo in db.WorkOrder.Include(w => w.Customers) select wo;
+            var test = db.WorkOrder.Include(w => w.Customers);
+            if(!String.IsNullOrEmpty(CustName))
+            {
+                workOrder = workOrder.Where(wo => wo.Customers.CustName.Equals(CustName));
+            }
             return View(workOrder.ToList());
         }
 
@@ -35,6 +40,13 @@ namespace IntexAzure.Controllers
             mailer.IsHtml = true;
             mailer.Send();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ViewWorkOrderAssays(int WorkOrderID)
+        {
+            IEnumerable<Assays> AssaysResults = db.Database.SqlQuery<Assays>(
+               "SELECT * FROM Assays WHERE WorkOrderID =" + WorkOrderID);
+            return View("../Assays/Index", AssaysResults);
         }
 
         // GET: WorkOrders/Details/5
