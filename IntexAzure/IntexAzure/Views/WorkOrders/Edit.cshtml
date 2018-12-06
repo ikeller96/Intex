@@ -28,7 +28,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderRushed, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OrderRushed, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.OrderRushed, new List<SelectListItem>
+{
+                   new SelectListItem() {Text="Yes", Value="Yes"},
+                   new SelectListItem() { Text="No", Value="No"}, },
+               "-- Select One --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OrderRushed, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +40,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderStatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OrderStatus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.OrderStatus, new List<SelectListItem>
+{
+                   new SelectListItem() { Text="In Progress", Value="In Progress"},
+                   new SelectListItem() { Text="Complete", Value="Complete"},
+                   new SelectListItem() { Text="BackLog", Value="BackLog"},},
+               "-- Order Status --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,7 +61,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderDiscounts, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OrderDiscounts, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.OrderDiscounts, new List<SelectListItem>
+{
+                   new SelectListItem() {Text="None", Value="None"},
+                   new SelectListItem() { Text="Bronze", Value="Bronze"},
+                   new SelectListItem() { Text="Gold", Value="Gold"},
+                   new SelectListItem() { Text="Platinum", Value="Platinum"},},
+               "-- Select One --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OrderDiscounts, "", new { @class = "text-danger" })
             </div>
         </div>
