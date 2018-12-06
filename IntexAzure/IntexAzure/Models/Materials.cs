@@ -17,6 +17,8 @@ namespace IntexAzure.Models
 
         public int QuantityAvailable { get; set; }
 
+        public decimal MaterialPrice { get; set; }
+
 
     }
 }
