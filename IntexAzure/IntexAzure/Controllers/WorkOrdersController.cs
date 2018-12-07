@@ -117,6 +117,7 @@ namespace IntexAzure.Controllers
         {
             if (ModelState.IsValid)
             {
+                workOrders.OrderCreationDate = DateTime.Now;
                 db.WorkOrder.Add(workOrders);
                 db.SaveChanges();
                 return RedirectToAction("Index");
