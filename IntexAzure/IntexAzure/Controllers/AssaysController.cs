@@ -18,7 +18,7 @@ namespace IntexAzure.Controllers
         // GET: Assays
         public ActionResult Index(int? WorkOrderID)
         {
-            var assay = from a in db.Assay.Include(a => a.WorkOrders) select a;
+            var assay = from a in db.Assay.Include(a => a.WorkOrders).Include(a => a.AssayTypes) select a;
             
             
             if (WorkOrderID != null)
