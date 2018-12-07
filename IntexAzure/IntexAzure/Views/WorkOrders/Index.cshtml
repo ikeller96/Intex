@@ -34,13 +34,8 @@
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.OrderDueDate)
-        </th>
-
-        <th>
             @Html.DisplayNameFor(model => model.OrderStatus)
         </th>
-
 
         <th></th>
 
@@ -49,6 +44,7 @@
     @foreach (var item in Model)
     {
     <tr>
+        <!--logic to get the 2 methods to work-->
         
         <td>
             @Html.DisplayFor(modelItem => item.WorkOrderID)
@@ -58,13 +54,8 @@
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.OrderDueDate)
-        </td>
-        
-        <td>
             @Html.DisplayFor(modelItem => item.OrderStatus)
         </td>
-        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderID }) |
             @Html.ActionLink("Details", "Details", new { id = item.WorkOrderID })|
