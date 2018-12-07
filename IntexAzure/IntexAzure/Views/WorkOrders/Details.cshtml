@@ -102,6 +102,9 @@
          IncompleteTests = (Model.BackLogTests + Model.InProgressTests), PercentComplete = ViewBag.PercentComplete, CustEmail = Model.WorkOrder.Customers.CustEmail,
          EmpName = Model.WorkOrder.Customers.Employees.EmpName})
 </div>
+<br />
+<br />
+<br />
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrder.WorkOrderID }) |
     @Html.ActionLink("Back to List", "Index")
