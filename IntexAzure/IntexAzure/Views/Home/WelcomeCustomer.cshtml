@@ -1,10 +1,4 @@
-﻿@model IEnumerable<IntexAzure.Models.Assays>
-
-@{
-    ViewBag.Title = "WorkOrderAssays";
-}
-
-
+﻿
 @{
     Layout = null;
 }
@@ -46,43 +40,25 @@
 
     <div class="container body-content">
 
-        <h2>WorkOrderAssays</h2>
+        <div class="jumbotron">
+            <h1>Welcome @ViewBag.Name</h1>
+            <p class="lead">Use this portal to view the status or results of your work orders or place a new order!</p>
+            <p><a href=@Url.Action("MyWorkOrders", "Home") class="btn btn-primary btn-lg">View My Work Orders &raquo;</a></p>
+            <p><a href=@Url.Action("NewWorkOrder", "Home", new { id = ViewBag.CustID}) class="btn btn-primary btn-lg">Place an Order &raquo;</a></p>
+        </div>
 
-
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.WorkOrders.OrderRushed)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssayStatus)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AssayTypeID)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.WorkOrders.OrderRushed)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AssayStatus)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AssayTypeID)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Tests", "AssayTests", new { id = item.AssayID })
-                    </td>
-                </tr>
-            }
-
-        </table>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    NorthWest Labs performs tests on various compounds for clients. Clients may place orders online and track the status of those orders through an intuitive interface.
+                </p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            </div>
 
         </div>
+
+    </div>
+
 </body>
 </html>

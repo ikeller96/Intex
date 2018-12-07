@@ -12,11 +12,13 @@ namespace IntexAzure.Models
     public class WorkOrders
     {
         [Key]
+        [DisplayName("Work Order ID")]
         public int WorkOrderID { get; set; }
 
 
         [DisplayName("Due Date")]
         [DataType(DataType.Date, ErrorMessage = "Please enter a valid date.")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime OrderDueDate { get; set; }
 
         [DisplayName("Order Rushed?")]
@@ -31,6 +33,7 @@ namespace IntexAzure.Models
 
         [DisplayName("Creation Date")]
         [DataType(DataType.Date, ErrorMessage = "Please enter a valid date.")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime OrderCreationDate { get; set; }
 
 

@@ -20,6 +20,7 @@ namespace IntexAzure.Models
         [Required(ErrorMessage = "Please select a employee")]
         public string EmpName { get; set; }
 
+        [DisplayName("Employee Position")]
         public string EmpPosition { get; set; }
 
         public int Wage { get; set; }

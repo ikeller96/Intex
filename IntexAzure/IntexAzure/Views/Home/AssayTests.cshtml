@@ -4,55 +4,102 @@
     ViewBag.Title = "AssayTests";
 }
 
-<h2>AssayTests</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AssayID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TestTypeID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuantitativeResults)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QualitativeResults)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompoundSC)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaterialsListID)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssayID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TestTypeID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuantitativeResults)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QualitativeResults)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompoundSC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaterialsListID)
-        </td>
-        @*<td>
-            @Html.ActionLink("Details", "Details", new { id=item.CompoundTestID })
-        </td>*@
-    </tr>
+@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WelcomeCustomer</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
 
-</table>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("My Work Orders", "MyWorkOrders", "Home")</li>
+
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    <li>@Html.ActionLink("SignUp", "SignUp", "Home")</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+
+        <h2>AssayTests</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AssayID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TestTypeID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuantitativeResults)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QualitativeResults)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompoundSC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaterialsListID)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssayID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestTypeID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantitativeResults)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QualitativeResults)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompoundSC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaterialsListID)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Details", "Details", new { id=item.CompoundTestID })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

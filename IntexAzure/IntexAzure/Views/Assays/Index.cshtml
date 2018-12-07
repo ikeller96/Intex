@@ -3,13 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Customers")">Customers</a></li>
+    <li><a href="@Url.Action("Index", "WorkOrders")">Work Orders</a></li>
+    <li>Assays</li>
+</ul>
+<h2>Assays</h2>
 
-<h2>Index</h2>
-<p>The total amount of all the testsssss is @ViewBag.test</p>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -19,12 +19,14 @@
             @Html.DisplayNameFor(model => model.WorkOrderID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AssayStatus)
+            @Html.DisplayNameFor(model => model.AssayTypes.AssayTypeDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AssayTypeID)
+            @Html.DisplayNameFor(model => model.AssayStatus)
         </th>
-        
+
+
+
         <th></th>
     </tr>
 
@@ -37,19 +39,26 @@
             @Html.DisplayFor(modelItem => item.WorkOrderID)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.AssayTypes.AssayTypeDescription)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AssayStatus)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssayTypeID)
-        </td>
-        
+
+
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.AssayID }) |
-            @Html.ActionLink("View the Tests", "ViewAssayTests", new { assayID = item.AssayID })|
             @Html.ActionLink("Details", "Details", new { id = item.AssayID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AssayID })
+            @Html.ActionLink("View Tests", "ViewAssayTests", new { assayID = item.AssayID })
+
         </td>
     </tr>
 }
 
 </table>
+
+
+<p>
+    @Html.ActionLink("Create New Assay", "Create")
+</p>

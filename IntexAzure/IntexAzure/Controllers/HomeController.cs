@@ -10,6 +10,12 @@ using System.Data.Entity;
 using System.IO;
 using System.Net;
 
+/* 
+Group 1-11
+Trent McMillan, Joshua Sperry, Ian Keller, Samuel Faber
+This is our Intex Project :)
+
+*/
 
 namespace IntexAzure.Controllers
 {
@@ -23,7 +29,7 @@ namespace IntexAzure.Controllers
         public ActionResult Index()
         {
             
-            return View();
+            return View("Index1");
         }
 
         public ActionResult About()
@@ -70,7 +76,10 @@ namespace IntexAzure.Controllers
                     currentUserName = username;
                     currentPassword = password;
 
-                    return RedirectToAction("Index", "Home");
+                    ViewBag.Name = LoginID.First().CustName;
+                    ViewBag.CustID = LoginID.First().CustID;
+
+                    return RedirectToAction("WelcomeCustomer", "Home"); //cust view
                 }
 
                 else
@@ -86,7 +95,7 @@ namespace IntexAzure.Controllers
                 currentUserName = username;
                 currentPassword = password;
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("WelcomeEmployee", "Home"); //emp view
             }
 
             else
@@ -104,9 +113,6 @@ namespace IntexAzure.Controllers
             return View();
         }
 
-        // POST: Customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUp([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPhone,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
@@ -126,7 +132,8 @@ namespace IntexAzure.Controllers
                     //FormsAuthentication.SetAuthCookie(username, rememberMe);
                     ViewBag.Message = "That username and password are already being used.";
                     ViewBag.Employees = db.Employee.ToList();
-                    return View("SignUp"); //I should inform them that the username or password is already taken.
+                    return View("SignUp"); 
+                    //I should inform them that the username or password is already taken.
 
                 }
 
@@ -140,7 +147,7 @@ namespace IntexAzure.Controllers
             return View(customers);
         }
 
-        [Authorize]
+        [Authorize]  //Make customers log in to view their work orders
         public ActionResult MyWorkOrders()
         {
           
@@ -201,6 +208,66 @@ namespace IntexAzure.Controllers
 
 
             return View(currentTests.ToList());
+        }
+
+        public ActionResult WelcomeCustomer()  //customer views
+        {
+            var Cust =
+                    db.Database.SqlQuery<Customers>(
+                "Select * " +
+                "FROM Customers " +
+                "WHERE UserName = '" + currentUserName + "' AND " +
+                "Password = '" + currentPassword + "'");
+
+            ViewBag.Name = Cust.First().CustName;
+
+            return View();
+        }
+
+
+        public ActionResult NewWorkOrder(int? id)
+        {
+            ViewBag.CustID = id;
+
+            return View();
+        }
+
+        // POST: WorkOrders/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewWorkOrder([Bind(Include = "WorkOrderID,OrderDueDate,OrderRushed,OrderStatus,OrderCreationDate,OrderDiscounts,CustID")] WorkOrders workOrders)
+        {
+            if (ModelState.IsValid)
+            {
+                var UsersID =
+                    db.Database.SqlQuery<Customers>(
+                "Select * " +
+                "FROM Customers " +
+                "WHERE UserName = '" + currentUserName + "' AND " +
+                "Password = '" + currentPassword + "'");
+
+                workOrders.CustID = UsersID.First().CustID;
+                db.WorkOrder.Add(workOrders);
+                db.SaveChanges();
+                return RedirectToAction("Thanks", new { name = UsersID.First().CustName});
+            }
+
+            ViewBag.CustID = new SelectList(db.Customer, "CustID", "CustName", workOrders.CustID);
+            return View(workOrders);
+        }
+
+        public ActionResult Thanks(string name)
+        {
+            ViewBag.Name = name;
+
+            return View();
+        }
+
+        public ActionResult WelcomeEmployee()  //send employees to employee view
+        {
+            return View();
         }
 
     }
