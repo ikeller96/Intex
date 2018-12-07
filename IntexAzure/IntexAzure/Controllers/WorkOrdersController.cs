@@ -25,21 +25,22 @@ namespace IntexAzure.Controllers
             {
                 workOrder = workOrder.Where(wo => wo.WorkOrderID == CustID);
             }
-
+            
             return View(workOrder.ToList());
         }
 
         
-        public ActionResult EmailUpdate(string email, string name, string status, int workorderid, int testnum)
+        public ActionResult EmailUpdate(string CustName, int WorkOrderID, string OrderStatus, decimal CompletedTests, decimal IncompleteTests, decimal PercentComplete, string CustEmail, string EmpName)
         {
-
-            Gmailer.GmailUsername = "joshuasperry@gmail.com";
-            Gmailer.GmailPassword = "Brighton@14";
+            //this is good stuff right here
+            Gmailer.GmailUsername = "noreply.northwestlabs@gmail.com";
+            Gmailer.GmailPassword = "intexrocks";
 
             Gmailer mailer = new Gmailer();
-            mailer.ToEmail = email;
-            mailer.Subject = "suck it again";
-            mailer.Body = $"Dear {name},<br><br>This is an update email. Your work order {workorderid}'s status is currently {status} and testnum is {testnum}.<br><br> From,<br><br>Your MOM";
+            mailer.ToEmail = CustEmail;
+            mailer.Subject = "Status Update on Work Order " + WorkOrderID;
+            mailer.Body = $"Dear {CustName},<br><br>This is an update email. Your work order {WorkOrderID}'s status is {PercentComplete}% complete. <br>There are {IncompleteTests} more " +
+                $"tests that need to be completed.<br>For further information please reach out to your employee representative {EmpName}.";
             mailer.IsHtml = true;
             mailer.Send();
             return RedirectToAction("Index");
@@ -58,18 +59,52 @@ namespace IntexAzure.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrders workOrders = db.WorkOrder.Find(id);
-            if (workOrders == null)
+            WorkOrdersPrice WorkOrderPrice = new WorkOrdersPrice();
+            WorkOrderPrice.WorkOrder = db.WorkOrder.Find(id);
+
+            // bring in pricing information
+            var specifictests = from st in db.SpecificTest select st;
+            specifictests = specifictests.Where(st => st.Assays.WorkOrderID == id);
+
+            // get values of stuff
+            WorkOrderPrice.WorkOrderPrice = specifictests.Sum(st => st.TestType.testTypeCost).GetValueOrDefault();
+            WorkOrderPrice.CompleteTests = specifictests.Count(st => st.testStatus == "Complete");
+            WorkOrderPrice.BackLogTests = specifictests.Count(st => st.testStatus == "BackLog");
+            WorkOrderPrice.InProgressTests = specifictests.Count(st => st.testStatus == "In Progress");
+
+            decimal totalTests = (WorkOrderPrice.CompleteTests.GetValueOrDefault() + WorkOrderPrice.BackLogTests.GetValueOrDefault() + WorkOrderPrice.InProgressTests.GetValueOrDefault());
+            decimal percentComplete;
+                //get decent formatting for display
+            if (totalTests == 0)
+            {
+                 percentComplete = 0;
+            }
+            else
+            {
+                percentComplete = (WorkOrderPrice.CompleteTests.GetValueOrDefault() / (WorkOrderPrice.CompleteTests.GetValueOrDefault() + WorkOrderPrice.BackLogTests.GetValueOrDefault() + WorkOrderPrice.InProgressTests.GetValueOrDefault())) * 100;
+
+            }
+            var sPercentComplete = String.Format("{0:N0}", percentComplete);
+            ViewBag.PercentComplete = sPercentComplete;
+
+
+            //in case the work order price is null then reset it to 0
+            /*if (WorkOrderPrice.WorkOrderPrice == null)
+            {
+                WorkOrderPrice.WorkOrderPrice = 0;
+            }*/
+            if (WorkOrderPrice == null)
             {
                 return HttpNotFound();
             }
-            return View(workOrders);
+            return View(WorkOrderPrice);
         }
 
         // GET: WorkOrders/Create
         public ActionResult Create()
         {
             ViewBag.CustID = new SelectList(db.Customer, "CustID", "CustName");
+
             return View();
         }
 

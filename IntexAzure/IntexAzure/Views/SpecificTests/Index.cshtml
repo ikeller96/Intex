@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.AssayID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TestTypeID)
+            @Html.DisplayNameFor(model => model.TestType.testTypeName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.QuantitativeResults)
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.AssayID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TestTypeID)
+            @Html.DisplayFor(modelItem => item.TestType.testTypeName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.QuantitativeResults)
@@ -56,7 +56,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.CompoundTestID }) |
            
             @Html.ActionLink("Details", "Details", new { id=item.CompoundTestID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CompoundTestID })
+            
         </td>
     </tr>
 }

@@ -19,12 +19,13 @@ namespace IntexAzure.Models
         [DataType(DataType.Date, ErrorMessage = "Please enter a valid date.")]
         public DateTime OrderDueDate { get; set; }
 
-        [StringLength(1, ErrorMessage = "Order Rushed must be 1 carachter, Y or N")]
         [DisplayName("Order Rushed? Y or N")]
+        [Required(ErrorMessage = "Please select an option")]
         public string OrderRushed { get; set; }
 
-        [StringLength(30, ErrorMessage = "Your Order status must be less than 30 characters")]
+
         [DisplayName("Status")]
+        [Required(ErrorMessage = "Please select a status")]
         public string OrderStatus { get; set; }
 
 
@@ -32,11 +33,15 @@ namespace IntexAzure.Models
         [DataType(DataType.Date, ErrorMessage = "Please enter a valid date.")]
         public DateTime OrderCreationDate { get; set; }
 
-        [StringLength(30, ErrorMessage = "Discounts must be less than 30 characters")]
+
         [DisplayName("Discounts")]
+        [Required(ErrorMessage = "Please select a discount")]
         public string OrderDiscounts { get; set; }
 
+        [DisplayName("Customer")]
+        [Required(ErrorMessage = "Please select a customer")]
         public int CustID { get; set; }
+
         public virtual Customers Customers { get; set; }
     }
 }

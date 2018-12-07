@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SpecificTests</h4>
         <hr />
@@ -73,8 +73,16 @@
     </div>
 }
 
+
 <div>
     @Html.ActionLink("Back to List", "Index")
+</div>
+<br />  
+<br />
+<br />
+
+<div class="btn btn-default">
+    @Html.ActionLink("Delete", "Delete", new { id = Model.CompoundTestID })
 </div>
 
 @section Scripts {

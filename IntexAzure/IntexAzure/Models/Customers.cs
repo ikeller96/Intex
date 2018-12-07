@@ -12,6 +12,8 @@ namespace IntexAzure.Models
     public class Customers
     {
         [Key]
+        [DisplayName("Customer")]
+        [Required(ErrorMessage = "Please select a customer")]
         public int CustID { get; set; }
 
         [StringLength(60, ErrorMessage = "Your Name must be less than 60 characters")]
@@ -57,7 +59,12 @@ namespace IntexAzure.Models
         [Required(ErrorMessage = "Please enter your payment info")]
         public string CustPaymentInfo { get; set; }
 
+        [DisplayName("Employee")]
+        [Required(ErrorMessage = "Please select on employee")]
         public int? EmpID { get; set; }
+
+        [DisplayName("Employee")]
+        [Required(ErrorMessage = "Please select on employee")]
         public virtual Employees Employees { get; set; }
 
         public string UserName { get; set; }

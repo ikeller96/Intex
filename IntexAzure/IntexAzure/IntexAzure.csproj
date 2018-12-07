@@ -179,6 +179,7 @@
     <Compile Include="Models\TestEmployees.cs" />
     <Compile Include="Models\TestType.cs" />
     <Compile Include="Models\WorkOrderAssays.cs" />
+    <Compile Include="Models\WorkOrdersPrice.cs" />
     <Compile Include="Models\WorkOrders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +193,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Graphics\ian.jpg" />
+    <Content Include="Graphics\sam.jpg" />
+    <Content Include="Graphics\sperry.jpg" />
+    <Content Include="Graphics\trent.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -259,6 +264,11 @@
     <Content Include="Views\SpecificTests\Details.cshtml" />
     <Content Include="Views\SpecificTests\Edit.cshtml" />
     <Content Include="Views\SpecificTests\Index.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Home\WelcomeCustomer.cshtml" />
+    <Content Include="Views\Home\NewWorkOrder.cshtml" />
+    <Content Include="Views\Home\Thanks.cshtml" />
+    <Content Include="Views\Home\WelcomeEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -294,7 +304,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53861</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53861/</IISUrl>
+          <IISUrl>http://localhost:53865/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
