@@ -3,11 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Customers")">Customers</a></li>
+    <li><a href="@Url.Action("Index", "WorkOrders")">Work Orders</a></li>
+    <li>Assays</li>
+</ul>
+<h2>Assays</h2>
 
-<h2>Index</h2>
-<p>The total amount of all the testsssss is @ViewBag.test</p>
-
-<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
