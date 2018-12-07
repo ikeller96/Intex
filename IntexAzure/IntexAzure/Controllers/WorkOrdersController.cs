@@ -38,6 +38,7 @@ namespace IntexAzure.Controllers
 
             Gmailer mailer = new Gmailer();
             mailer.ToEmail = CustEmail;
+            
             mailer.Subject = "Status Update on Work Order " + WorkOrderID;
             mailer.Body = $"Dear {CustName},<br><br>This is an update email. Your work order {WorkOrderID}'s status is {PercentComplete}% complete. <br>There are {IncompleteTests} more " +
                 $"tests that need to be completed.<br>For further information please reach out to your employee representative {EmpName}. <br><br> Northwest Labs";
