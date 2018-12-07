@@ -3,12 +3,17 @@
 @{
     ViewBag.Title = "Details";
 }
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Customers")">Customers</a></li>
+    <li>Work Orders</li>
 
-<h2>Details</h2>
+</ul>
+<h2>Work Order @Model.WorkOrder.WorkOrderID</h2>
 
 <div>
-    <h4>WorkOrders</h4>
+
     <hr />
+    <h4>Percent Complete: @ViewBag.PercentComplete %</h4>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.WorkOrder.Customers.CustName)
@@ -31,6 +36,20 @@
 
         <dd>
             @Html.DisplayFor(model => model.CompleteTests)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BackLogTests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackLogTests)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InProgressTests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InProgressTests)
         </dd>
 
         <dt>
@@ -74,6 +93,14 @@
         </dd>
 
     </dl>
+</div>
+
+<div class="btn btn-default">
+    @Html.ActionLink("Send Customer Status Update", "EmailUpdate",
+    new { CustName = Model.WorkOrder.Customers.CustName, WorkOrderID = Model.WorkOrder.WorkOrderID,
+         OrderStatus = Model.WorkOrder.OrderStatus, CompletedTests = Model.CompleteTests,
+         IncompleteTests = (Model.BackLogTests + Model.InProgressTests), PercentComplete = ViewBag.PercentComplete, CustEmail = Model.WorkOrder.Customers.CustEmail,
+         EmpName = Model.WorkOrder.Customers.Employees.EmpName})
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrder.WorkOrderID }) |

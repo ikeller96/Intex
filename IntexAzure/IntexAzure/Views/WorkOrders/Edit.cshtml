@@ -3,8 +3,12 @@
 @{
     ViewBag.Title = "Edit";
 }
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Customers")">Customers</a></li>
+    <li>Work Orders</li>
 
-<h2>Edit</h2>
+</ul>
+<h2>Work Order @Model.WorkOrderID</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +16,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>WorkOrders</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.WorkOrderID)
@@ -88,12 +92,16 @@
     </div>
 }
 
-    <div>
-        @Html.ActionLink("Delete this entry", "Delete", )
-    </div>
+    
 
 <div>
     @Html.ActionLink("Back to List", "Index")
+</div>
+<br />  
+<br />  
+<br />  
+<div class="btn btn-default">
+    @Html.ActionLink("Delete this entry", "Delete", new { id = Model.WorkOrderID })
 </div>
 
 @section Scripts {
