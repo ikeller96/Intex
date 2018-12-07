@@ -41,8 +41,5 @@ namespace IntexAzure.Models
 
         [DisplayName("Assays")]
         public virtual Assays Assays { get; set; }
-
-
-
     }
 }
