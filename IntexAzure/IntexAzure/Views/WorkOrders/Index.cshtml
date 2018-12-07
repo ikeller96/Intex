@@ -43,18 +43,6 @@
     <tr>
         <!--logic to get the 2 methods to work-->
         
-        @if (ViewBag.CustomerName == null)
-        {
-            <td>
-                @Html.DisplayFor(modelItem => item.Customers.CustName)
-            </td>
-        }
-        else
-        {
-            <td>
-                @ViewBag.CustomerName
-            </td>
-        }
         <td>
             @Html.DisplayFor(modelItem => item.WorkOrderID)
         </td>
