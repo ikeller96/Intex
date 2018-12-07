@@ -45,7 +45,7 @@ namespace IntexAzure.Controllers
             mailer.IsHtml = true;
             mailer.Send();
             int ID = WorkOrderID;
-            return RedirectToAction("Details", ID);
+            return RedirectToAction("Index");
         }
 
         public ActionResult ViewWorkOrderAssays(int workOrderID)
