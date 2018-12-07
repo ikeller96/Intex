@@ -21,7 +21,7 @@ namespace IntexAzure.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime OrderDueDate { get; set; }
 
-        [DisplayName("Order Rushed? Y or N")]
+        [DisplayName("Order Rushed?")]
         [Required(ErrorMessage = "Please select an option")]
         public string OrderRushed { get; set; }
 
