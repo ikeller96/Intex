@@ -195,6 +195,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Graphics\ian.jpg" />
+    <Content Include="Graphics\NorthwestLabs.png" />
     <Content Include="Graphics\sam.jpg" />
     <Content Include="Graphics\sperry.jpg" />
     <Content Include="Graphics\trent.jpg" />

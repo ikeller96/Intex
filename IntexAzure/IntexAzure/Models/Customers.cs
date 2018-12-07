@@ -64,6 +64,7 @@ namespace IntexAzure.Models
         public int? EmpID { get; set; }
 
         [DisplayName("Employee")]
+        [Required(ErrorMessage = "Please select an employee")]
         public virtual Employees Employees { get; set; }
 
         public string UserName { get; set; }
