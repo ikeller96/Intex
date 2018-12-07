@@ -21,10 +21,11 @@ namespace IntexAzure.Controllers
             var assay = from a in db.Assay.Include(a => a.WorkOrders).Include(a => a.AssayTypes) select a;
             
             
+            
             if (WorkOrderID != null)
             {
                 assay = assay.Where(a => a.WorkOrderID == WorkOrderID);
-               
+                ViewBag.WorkOrderID = WorkOrderID;
             }
             
            
@@ -66,9 +67,14 @@ namespace IntexAzure.Controllers
         }
 
         // GET: Assays/Create
-        public ActionResult Create()
+        public ActionResult Create(int? WorkOrderID)
         {
             ViewBag.WorkOrderID = new SelectList(db.WorkOrder, "WorkOrderID", "OrderRushed");
+
+            if(WorkOrderID !=null )
+            {
+                ViewBag.WorkOrderID = WorkOrderID;
+            }
             return View();
         }
 

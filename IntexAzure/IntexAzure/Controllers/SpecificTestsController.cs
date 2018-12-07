@@ -22,6 +22,7 @@ namespace IntexAzure.Controllers
             if(AssayID != null)
             {
                 specifictests = specifictests.Where(st => st.AssayID == AssayID);
+                ViewBag.AssayID = AssayID;
             }
             return View(specifictests.ToList());
         }
@@ -42,7 +43,7 @@ namespace IntexAzure.Controllers
         }
 
         // GET: SpecificTests/Create
-        public ActionResult Create()
+        public ActionResult Create(int? AssayID)
         {
             return View();
         }

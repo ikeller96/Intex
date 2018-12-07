@@ -28,10 +28,10 @@ namespace IntexAzure.Models
         public string QualitativeResults { get; set; }
 
         [DisplayName("Compound SC")]
-        public int CompoundSC { get; set; }
+        public int? CompoundSC { get; set; }
 
         [DisplayName("MaterialsListID")]
-        public int MaterialsListID { get; set; }
+        public int? MaterialsListID { get; set; }
 
         [DisplayName("Test Status")]
         public string testStatus { get; set; }
