@@ -1,34 +1,54 @@
-﻿
+﻿<!DOCTYPE html>
+<html>
 @{
     ViewBag.Title = "Thanks";
 }
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
-                <li>@Html.ActionLink("WorkOrders", "Index", "WorkOrders")</li>
-                <li>@Html.ActionLink("My Work Orders", "MyWorkOrders", "Home")</li>
-                <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                <li>@Html.ActionLink("SignUp", "SignUp", "Home")</li>
 
-            </ul>
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WelcomeCustomer</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("My Work Orders", "MyWorkOrders", "Home")</li>
+
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    <li>@Html.ActionLink("SignUp", "SignUp", "Home")</li>
+
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
-<h2>Thanks @ViewBag.Name</h2>
-<h3>Your order has been placed!</h3>
+    <div class="container body-content">
 
-<p><a href=@Url.Action("WelcomeCustomer", "Home", new { id = ViewBag.CustID}) class="btn btn-primary btn-lg">Return to my account &raquo;</a></p>
+        <h2>Thanks @ViewBag.Name</h2>
+        <h3>Your order has been placed!</h3>
+
+        <p><a href=@Url.Action("WelcomeCustomer", "Home", new { id = ViewBag.CustID}) class="btn btn-primary btn-lg">Return to my account &raquo;</a></p>
+
+    </div>
+</body>
+</html>
