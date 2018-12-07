@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace IntexAzure.Models
 
         public int MaterialID { get; set; }
 
+        [DisplayName("Quantity Used")]
         public int QuantityUsed { get; set; }
 
 

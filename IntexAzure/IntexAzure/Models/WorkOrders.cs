@@ -12,6 +12,7 @@ namespace IntexAzure.Models
     public class WorkOrders
     {
         [Key]
+        [DisplayName("Work Order ID")]
         public int WorkOrderID { get; set; }
 
 
