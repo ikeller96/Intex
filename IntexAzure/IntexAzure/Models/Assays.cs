@@ -27,6 +27,7 @@ namespace IntexAzure.Models
         [DisplayName("Work Orders")]
         public virtual WorkOrders WorkOrders { get; set; }
         
+        [DisplayName("Assay Types")]
         public virtual AssayTypes AssayTypes { get; set; }
 
         
