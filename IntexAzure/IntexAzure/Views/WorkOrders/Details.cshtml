@@ -3,13 +3,17 @@
 @{
     ViewBag.Title = "Details";
 }
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Customers")">Customers</a></li>
+    <li>Work Orders</li>
 
-<h2>Details</h2>
+</ul>
+<h2>Work Order @Model.WorkOrder.WorkOrderID</h2>
 
 <div>
-    <h4>WorkOrders</h4>
+
     <hr />
-    <h6>Percent Complete: @ViewBag.PercentComplete %</h6>
+    <h4>Percent Complete: @ViewBag.PercentComplete %</h4>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.WorkOrder.Customers.CustName)
