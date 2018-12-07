@@ -32,7 +32,7 @@
 {
                    new SelectListItem() {Text="Yes", Value="Yes"},
                    new SelectListItem() { Text="No", Value="No"}, },
-               "-- Select One --", htmlAttributes: new { @class = "form-control" })
+               Model.OrderRushed, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OrderRushed, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,7 +45,7 @@
                    new SelectListItem() { Text="In Progress", Value="In Progress"},
                    new SelectListItem() { Text="Complete", Value="Complete"},
                    new SelectListItem() { Text="BackLog", Value="BackLog"},},
-               "-- Order Status --", htmlAttributes: new { @class = "form-control" })
+               Model.OrderStatus, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -67,7 +67,7 @@
                    new SelectListItem() { Text="Bronze", Value="Bronze"},
                    new SelectListItem() { Text="Gold", Value="Gold"},
                    new SelectListItem() { Text="Platinum", Value="Platinum"},},
-               "-- Select One --", htmlAttributes: new { @class = "form-control" })
+               Model.OrderDiscounts, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OrderDiscounts, "", new { @class = "text-danger" })
             </div>
         </div>

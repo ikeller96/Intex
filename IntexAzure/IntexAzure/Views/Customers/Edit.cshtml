@@ -105,7 +105,7 @@ new SelectListItem() {Text="Alabama", Value="AL"},
         new SelectListItem() { Text="West Virginia", Value="WV"},
         new SelectListItem() { Text="Wisconsin", Value="WI"},
         new SelectListItem() { Text="Wyoming", Value="WY"}
- }, "-- choose a state --", htmlAttributes: new { @class = "form-control" })
+ }, Model.CustState, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CustState, "", new { @class = "text-danger" })
             </div>
         </div>

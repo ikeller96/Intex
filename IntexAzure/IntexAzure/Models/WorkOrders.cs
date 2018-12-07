@@ -19,7 +19,7 @@ namespace IntexAzure.Models
         [DataType(DataType.Date, ErrorMessage = "Please enter a valid date.")]
         public DateTime OrderDueDate { get; set; }
 
-        [DisplayName("Order Rushed? Y or N")]
+        [DisplayName("Order Rushed?")]
         [Required(ErrorMessage = "Please select an option")]
         public string OrderRushed { get; set; }
 
