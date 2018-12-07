@@ -14,6 +14,7 @@ namespace IntexAzure.Models
         [Key]
         public int MaterialsListID { get; set; }
 
+        [DisplayName("Material ID")]
         public int MaterialID { get; set; }
 
         [DisplayName("Quantity Used")]
