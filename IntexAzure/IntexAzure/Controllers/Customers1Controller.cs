@@ -11,24 +11,18 @@ using IntexAzure.Models;
 
 namespace IntexAzure.Controllers
 {
-    public class CustomersController : Controller
+    public class Customers1Controller : Controller
     {
         private IntexContext db = new IntexContext();
 
-        // GET: Customers
+        // GET: Customers1
         public ActionResult Index()
         {
-            
             var customer = db.Customer.Include(c => c.Employees);
             return View(customer.ToList());
         }
 
-        public ActionResult ViewWorkOrders(int custID)
-        {
-            return RedirectToAction("Index", "WorkOrders", new { CustID = custID });
-        }
-
-        // GET: Customers/Details/5
+        // GET: Customers1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -43,17 +37,16 @@ namespace IntexAzure.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Create
+        // GET: Customers1/Create
         public ActionResult Create()
         {
             ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName");
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Customers1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
@@ -64,13 +57,12 @@ namespace IntexAzure.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
 
             ViewBag.EmpID = new SelectList(db.Employee, "EmpID", "EmpName", customers.EmpID);
             return View(customers);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Customers1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -86,12 +78,12 @@ namespace IntexAzure.Controllers
             return View(customers);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Customers1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPhone,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
+        public ActionResult Edit([Bind(Include = "CustID,CustName,CustAddress1,CustAddress2,CustCity,CustState,CustZip,CustEmail,CustPaymentInfo,EmpID,UserName,Password")] Customers customers)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +95,7 @@ namespace IntexAzure.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Customers1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -118,7 +110,7 @@ namespace IntexAzure.Controllers
             return View(customers);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Customers1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

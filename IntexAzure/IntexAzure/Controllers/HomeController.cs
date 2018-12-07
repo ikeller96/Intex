@@ -32,6 +32,11 @@ namespace IntexAzure.Controllers
             return View("Index1");
         }
 
+        public ActionResult EmployeeLinks()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

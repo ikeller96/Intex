@@ -23,7 +23,7 @@ namespace IntexAzure.Controllers
 
             if (CustID != null)
             {
-                workOrder = workOrder.Where(wo => wo.WorkOrderID == CustID);
+                workOrder = workOrder.Where(wo => wo.CustID == CustID);
             }
             
             return View(workOrder.ToList());
