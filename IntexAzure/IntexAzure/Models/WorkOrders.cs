@@ -27,7 +27,6 @@ namespace IntexAzure.Models
 
 
         [DisplayName("Status")]
-        [Required(ErrorMessage = "Please select a status")]
         public string OrderStatus { get; set; }
 
 
