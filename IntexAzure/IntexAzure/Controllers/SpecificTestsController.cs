@@ -53,7 +53,7 @@ namespace IntexAzure.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CompoundTestID,AssayID,TestTypeID,QuantitativeResults,QualitativeResults,CompoundSC,MaterialsListID")] SpecificTests specificTests)
+        public ActionResult Create([Bind(Include = "CompoundTestID,AssayID,TestTypeID,QuantitativeResults,QualitativeResults,CompoundSC,MaterialsListID,testStatus")] SpecificTests specificTests)
         {
             if (ModelState.IsValid)
             {

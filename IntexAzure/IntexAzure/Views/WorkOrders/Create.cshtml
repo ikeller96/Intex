@@ -46,7 +46,7 @@
                 @Html.DropDownListFor(model => model.OrderStatus, new List<SelectListItem>
 {
                    new SelectListItem() { Text="In Progress", Value="In Progress"},
-                   new SelectListItem() { Text="Completed", Value="Completed"},
+                   new SelectListItem() { Text="Completed", Value="Complete"},
                    new SelectListItem() { Text="BackLog", Value="BackLog"},},
                "-- Order Status --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })

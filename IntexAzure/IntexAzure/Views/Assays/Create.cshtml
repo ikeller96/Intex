@@ -35,7 +35,7 @@
                    new SelectListItem() { Text="In Progress", Value="In Progress"},
                    new SelectListItem() { Text="Complete", Value="Complete"},
                    new SelectListItem() { Text="BackLog", Value="BackLog"},},
-               "-- Order Status --", htmlAttributes: new { @class = "form-control" })
+               "-- Assay Status --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.AssayStatus, "", new { @class = "text-danger" })
             </div>
         </div>
