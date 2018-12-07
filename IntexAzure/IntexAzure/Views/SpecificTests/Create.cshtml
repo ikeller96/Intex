@@ -43,6 +43,14 @@
             @Html.ValidationMessageFor(model => model.QuantitativeResults, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.QualitativeResults, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.QualitativeResults, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.QualitativeResults, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div class="form-group">
         @Html.LabelFor(model => model.testStatus, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -51,15 +59,8 @@
                new SelectListItem() { Text="In Progress", Value="In Progress"},
                new SelectListItem() { Text="Complete", Value="Complete"},
                new SelectListItem() { Text="BackLog", Value="BackLog"},},
-           "-- Order Status --", htmlAttributes: new { @class = "form-control" })
+           "-- Test Status --", htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.testStatus, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.QualitativeResults, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.QualitativeResults, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.QualitativeResults, "", new { @class = "text-danger" })
         </div>
     </div>
 

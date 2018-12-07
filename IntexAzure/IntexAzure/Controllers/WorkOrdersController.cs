@@ -44,7 +44,8 @@ namespace IntexAzure.Controllers
                 $"tests that need to be completed.<br>For further information please reach out to your employee representative {EmpName}. <br><br> Northwest Labs";
             mailer.IsHtml = true;
             mailer.Send();
-            return RedirectToAction("Index");
+            int ID = WorkOrderID;
+            return RedirectToAction("Details", ID);
         }
 
         public ActionResult ViewWorkOrderAssays(int workOrderID)

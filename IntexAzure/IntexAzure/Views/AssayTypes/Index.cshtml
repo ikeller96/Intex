@@ -6,11 +6,12 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssayTypeID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.AssayTypeDescription)
         </th>
@@ -23,17 +24,24 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.AssayTypeID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AssayTypeDescription)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AssayTypeTime)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AssayTypeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AssayTypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AssayTypeID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.AssayTypeID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AssayTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AssayTypeID })
         </td>
     </tr>
 }
 
 </table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
