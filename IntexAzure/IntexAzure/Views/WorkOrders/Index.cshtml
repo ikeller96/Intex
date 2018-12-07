@@ -21,9 +21,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            Customer ID
-        </th>
 
         <th>
             Customer Name
@@ -35,16 +32,7 @@
             @Html.DisplayNameFor(model => model.OrderDueDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderRushed)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.OrderStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderCreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderDiscounts)
         </th>
         <th></th>
     </tr>
@@ -53,18 +41,7 @@
     {
     <tr>
         <!--logic to get the 2 methods to work-->
-        @if (ViewBag.CustomerID == null)
-        {
-            <td>
-                @Html.DisplayFor(modelItem => item.Customers.CustID)
-            </td>
-        }
-        else
-        {
-            <td>
-                @ViewBag.CustomerID
-            </td>
-        }
+        
         @if (ViewBag.CustomerName == null)
         {
             <td>
@@ -84,16 +61,7 @@
             @Html.DisplayFor(modelItem => item.OrderDueDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OrderRushed)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.OrderStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderCreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDiscounts)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderID }) |
