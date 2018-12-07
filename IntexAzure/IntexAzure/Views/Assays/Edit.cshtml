@@ -3,8 +3,12 @@
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Edit</h2>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Customers")">Customers</a></li>
+    <li><a href="@Url.Action("Index", "WorkOrders")">Work Orders</a></li>
+    <li>Assays</li>
+</ul>
+<h2>Assay @Model.AssayID</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +16,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Assays</h4>
+   
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.AssayID)
