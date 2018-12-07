@@ -90,6 +90,14 @@
 
     </dl>
 </div>
+
+<div class="btn btn-default">
+    @Html.ActionLink("Send Customer Status Update", "EmailUpdate",
+    new { CustName = Model.WorkOrder.Customers.CustName, WorkOrderID = Model.WorkOrder.WorkOrderID,
+         OrderStatus = Model.WorkOrder.OrderStatus, CompletedTests = Model.CompleteTests,
+         IncompleteTests = (Model.BackLogTests + Model.InProgressTests), PercentComplete = ViewBag.PercentComplete, CustEmail = Model.WorkOrder.Customers.CustEmail,
+         EmpName = Model.WorkOrder.Customers.Employees.EmpName})
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.WorkOrder.WorkOrderID }) |
     @Html.ActionLink("Back to List", "Index")

@@ -15,71 +15,56 @@
         </div>
     </div>
 </div>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Customers")">Customers</a></li>
+    <li>Work Orders</li>
+    
+</ul>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CustID)
-        </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Customers.CustName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.WorkOrderID)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Customers.CustName)
+        </th>
+
+        <th>
             @Html.DisplayNameFor(model => model.OrderDueDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderRushed)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.OrderStatus)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderCreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderDiscounts)
-        </th>
-        <th></th>
+
+
     </tr>
 
     @foreach (var item in Model)
     {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customers.CustName)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.WorkOrderID)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Customers.CustName)
+        </td>
+
+        <td>
             @Html.DisplayFor(modelItem => item.OrderDueDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderRushed)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.OrderStatus)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderCreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDiscounts)
-        </td>
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.WorkOrderID }) |
             @Html.ActionLink("Details", "Details", new { id = item.WorkOrderID })|
-            @Html.ActionLink("Email an Update", "EmailUpdate", new { name = item.Customers.CustName, email = item.Customers.CustEmail, status = item.OrderStatus, testnum = 900 / 3, workorderid = item.WorkOrderID })
             @Html.ActionLink("View Assays", "ViewWorkOrderAssays", new { workOrderID = item.WorkOrderID })
             <!--
 
@@ -89,3 +74,6 @@
     }
 
 </table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
